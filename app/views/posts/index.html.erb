@@ -1,4 +1,8 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <%= post.content  %>
+  <% end %>
+  <% else %>
 There are no posts yet!
-
 <a href="#">Add Post</a>
-
+  <% end %>
