@@ -22,5 +22,18 @@ feature 'Posts' do
       expect(page).not_to have_content("There are no posts yet")
     end
   end
+
+  context 'when a user fills out a form to make a post' do
+
+    scenario 'they should see that post' do
+      visit '/posts'
+      click_link 'Add Post'
+      fill_in 'Content', with: 'Hey everyone come see my post'
+      click_button 'Submit Post'
+      expect(page).to have_content("Hey everyone come see my post")
+      expect(current_path).to eq '/posts'
+    end
+  end
+
 end
 
