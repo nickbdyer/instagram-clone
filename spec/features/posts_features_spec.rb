@@ -60,5 +60,17 @@ feature 'Posts' do
       expect(current_path).to eq '/posts'
     end
   end
+
+  context 'deleting posts' do
+
+    let!(:test){Post.create(content: 'This is a test post')}
+
+    scenario 'users can delete posts' do
+      visit '/posts'
+      click_link 'Delete'
+      expect(page).not_to have_content("This is a test post")
+      expect(current_path).to eq '/posts'
+    end
+  end
 end
 
