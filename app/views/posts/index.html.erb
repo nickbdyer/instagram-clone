@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
       <th><%= model_class.human_attribute_name(:content) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -16,6 +17,7 @@
       <% @posts.each do |post| %>
         <tr>
           <td><%= post.id %></td>
+          <td><%= image_tag post.image.url(:thumb) %></td>
           <td><%= link_to post.content, post_path(post) %></td>
           <td><%=l post.created_at %></td>
           <td>
