@@ -35,6 +35,20 @@ feature 'Posts' do
     end
   end
 
+  context 'uploading photos' do
+
+    scenario 'users can make posts with images' do
+      visit '/posts'
+      click_link 'Add Post'
+      fill_in 'Content', with: 'Check this out'
+      attach_file('Image', "#{Rails.root}/spec/support/images/example.jpg")
+      click_button 'Create Post'
+      expect(page).to have_content("Check this out")
+      expect(page).to have_xpath("//img[contains(@src,\"example.jpg\")]")
+      expect(current_path).to eq '/posts'
+    end
+  end
+
   context 'viewing posts' do
 
     let!(:test){Post.create(content: 'Test Post')}

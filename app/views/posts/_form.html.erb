@@ -21,11 +21,18 @@
     <%= f.label :content, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :content, :class => 'form-control' %>
-      <%= f.file_field :image %>
     </div>
     <%= error_span(@post[:content]) %>
   </div>
 
+ <div class="control-group">
+    <%= f.label :image, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :image %>
+    </div>
+    <%= error_span(@post[:content]) %>
+</div>
+<br></br>
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
