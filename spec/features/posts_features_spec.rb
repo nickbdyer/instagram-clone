@@ -47,5 +47,18 @@ feature 'Posts' do
     end
   end
 
+  context 'editing posts' do
+
+    let!(:test){Post.create(content: 'This is a test post')}
+
+    scenario 'users can edit posts' do
+      visit '/posts'
+      click_link 'Edit'
+      fill_in 'Content', with: 'This is an edited test post'
+      click_button 'Update Post'
+      expect(page).to have_content("This is an edited test post")
+      expect(current_path).to eq '/posts'
+    end
+  end
 end
 
