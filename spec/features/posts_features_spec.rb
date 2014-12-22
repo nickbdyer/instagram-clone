@@ -35,5 +35,17 @@ feature 'Posts' do
     end
   end
 
+  context 'viewing posts' do
+
+    let!(:test){Post.create(content: 'Test Post')}
+
+    scenario 'when clicking on a post, that post should become visible' do
+      visit '/posts'
+      click_link 'Test Post'
+      expect(page).to have_content("Test Post")
+      expect(current_path).to eq '/posts/#{test.id}'
+    end
+  end
+
 end
 
