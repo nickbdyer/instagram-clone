@@ -29,7 +29,7 @@ feature 'Posts' do
       visit '/posts'
       click_link 'Add Post'
       fill_in 'Content', with: 'Hey everyone come see my post'
-      click_button 'Submit Post'
+      click_button 'Create Post'
       expect(page).to have_content("Hey everyone come see my post")
       expect(current_path).to eq '/posts'
     end
