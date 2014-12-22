@@ -69,6 +69,7 @@ feature 'Posts' do
       visit '/posts'
       click_link 'Delete'
       expect(page).not_to have_content("This is a test post")
+      expect(page).to have_content("Post successfully deleted")
       expect(current_path).to eq '/posts'
     end
   end
