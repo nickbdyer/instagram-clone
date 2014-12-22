@@ -41,5 +41,6 @@ gem 'spring',        group: :development
 gem 'twitter-bootstrap-rails'
 group :test do
   gem 'rspec-rails'
-    gem 'capybara'
+  gem 'capybara'
+  gem 'database_cleaner'
 end

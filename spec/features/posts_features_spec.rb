@@ -43,7 +43,7 @@ feature 'Posts' do
       visit '/posts'
       click_link 'Test Post'
       expect(page).to have_content("Test Post")
-      expect(current_path).to eq '/posts/#{test.id}'
+      expect(current_path).to eq "/posts/#{test.id}"
     end
   end
 
