@@ -13,5 +13,18 @@ feature 'Comments' do
     expect(page).to have_content("No it isn't")
   end
 
+  context 'when a post is deleted' do
+
+    scenario 'the comments are also deleted' do
+      visit '/posts'
+      click_link 'Comment'
+      fill_in 'Comment', with: "No it is not"
+      click_button 'Create Comment'
+      expect(page).to have_content("No it is not")
+      click_link 'Delete'
+      expect(page).not_to have_content("No it is not")
+    end
+  end
+      
 end
 
