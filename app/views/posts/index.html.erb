@@ -28,8 +28,17 @@
                         :method => :delete,
                         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                         :class => 'btn btn-xs btn-danger' %>
+            <%= link_to 'Comment', new_post_comment_path(post),
+                        :class => 'btn btn-default btn-xs' %>
           </td>
         </tr>
+        <% if post.comments.any? %>
+          <% post.comments.each do |comment| %>
+            <tr><td><%= comment.comment %></td></tr>
+          <% end %>
+        <% else %>
+          <tr><td>No comments.</td></tr>
+        <% end %>
       <% end %>
     <% else %>
       There are no posts yet

@@ -7,7 +7,7 @@ feature 'Comments' do
     visit '/posts'
     click_link 'Comment'
     fill_in 'Comment', with: "No it isn't"
-    click_button 'Submit'
+    click_button 'Create Comment'
 
     expect(current_path).to eq '/posts'
     expect(page).to have_content("No it isn't")

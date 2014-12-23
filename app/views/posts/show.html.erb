@@ -6,6 +6,14 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
   <dd><%= @post.content %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:image_file_name) %>:</strong></dt>
+  <dd><%= @post.image_file_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:image_content_type) %>:</strong></dt>
+  <dd><%= @post.image_content_type %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:image_file_size) %>:</strong></dt>
+  <dd><%= @post.image_file_size %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:image_updated_at) %>:</strong></dt>
+  <dd><%= @post.image_updated_at %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

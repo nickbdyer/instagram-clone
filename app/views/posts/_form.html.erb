@@ -1,11 +1,9 @@
-<%= form_for @post,
-  :html => { multipart: true, :class => "form-horizontal post" } do |f| %>
+<%= form_for @post, :html => { :class => "form-horizontal post" } do |f| %>
 
     <% if @post.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@post.errors.count, "error") %>
-          prohibited this post from being saved:</h3>
+        <h3 class="panel-title"><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h3>
       </div>
       <div class="panel-body">
         <ul>
@@ -24,16 +22,14 @@
     </div>
     <%= error_span(@post[:content]) %>
   </div>
-
- <div class="control-group">
+  <div class="control-group">
     <%= f.label :image, :class => 'control-label' %>
     <div class="controls">
-      <%= f.file_field :image %>
+      <%= f.file_field :image, :class => 'form-control' %>
     </div>
-    <%= error_span(@post[:content]) %>
-</div>
-<br></br>
-
+    <%= error_span(@post[:image_file_name]) %>
+  </div>
+  
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
             posts_path, :class => 'btn btn-default' %>
