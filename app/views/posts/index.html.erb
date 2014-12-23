@@ -28,7 +28,10 @@
                         :method => :delete,
                         :class => 'btn btn-xs btn-danger' %>
             <%= link_to 'Comment', new_post_comment_path(post),
-                        :class => 'btn btn-default btn-xs' %>
+              :class => 'btn btn-default btn-xs' %>           
+            <%= link_to 'Like', post_likes_path(post),
+              :method => :post,
+              :class => 'btn btn-primary btn-xs' %>
           </td>
         </tr>
         <tr><td colspan="5"><ul>
