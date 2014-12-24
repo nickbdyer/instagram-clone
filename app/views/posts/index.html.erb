@@ -21,7 +21,8 @@
           <td><%= image_tag post.image.url(:thumb) %></td>
           <td><%= link_to post.content, post_path(post) %></td>
           <td><%=l post.created_at %></td>
-          <td class="likes_count"><%= pluralize(post.likes.count, 'like') %></td>
+          <td class="likes"><span class="like_count"><%= post.likes.count %></span>
+             <%= "like".pluralize(post.likes.count) %></td>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_post_path(post), :class => 'btn btn-default btn-xs' %>
@@ -30,10 +31,9 @@
                         :method => :delete,
                         :class => 'btn btn-xs btn-danger' %>
             <%= link_to 'Comment', new_post_comment_path(post),
-              :class => 'btn btn-default btn-xs' %>           
+              :class => 'btn btn-default btn-xs' %>          
             <%= link_to 'Like', post_likes_path(post),
-              :method => :post,
-              :class => 'likes-link btn btn-primary btn-xs' %>
+            :class => 'like-link btn btn-primary btn-xs' %>
           </td>
         </tr>
         <tr><td colspan="6"><ul>
