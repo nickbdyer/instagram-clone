@@ -21,7 +21,7 @@
           <td><%= image_tag post.image.url(:thumb) %></td>
           <td><%= link_to post.content, post_path(post) %></td>
           <td><%=l post.created_at %></td>
-          <td><%= post.likes.count %> likes</td>
+          <td><%= pluralize(post.likes.count, 'like') %></td>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_post_path(post), :class => 'btn btn-default btn-xs' %>

@@ -11,5 +11,14 @@ feature 'Likes' do
     click_link 'Like'
     expect(page).to have_content('1 like')
   end
+  
+  scenario 'The number of likes is shown on the front page' do
+    visit '/posts'
+    click_link 'Like'
+    click_link 'Like'
+    click_link 'Like'
+    expect(page).to have_content('3 likes')
+  end
+    
 
 end
