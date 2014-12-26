@@ -1,6 +1,13 @@
 require 'rails_helper'
+require_relative '../helpers/posts_helper'
 
 feature 'Posts' do
+
+    before do
+      sign_up
+      sign_out
+    end
+
   context 'when no posts exist' do
 
     scenario 'should show a link for making a post' do
@@ -26,6 +33,7 @@ feature 'Posts' do
   context 'when a user fills out a form to make a post' do
 
     scenario 'they should see that post' do
+      sign_in
       visit '/posts'
       click_link 'Add Post'
       fill_in 'Content', with: 'Hey everyone come see my post'
@@ -38,6 +46,7 @@ feature 'Posts' do
   context 'uploading photos' do
 
     scenario 'users can make posts with images' do
+      sign_in
       visit '/posts'
       click_link 'Add Post'
       fill_in 'Content', with: 'Check this out'
@@ -66,6 +75,7 @@ feature 'Posts' do
     let!(:test){Post.create(content: 'This is a test post')}
 
     scenario 'users can edit posts' do
+      sign_in
       visit '/posts'
       click_link 'Edit'
       fill_in 'Content', with: 'This is an edited test post'
@@ -80,6 +90,7 @@ feature 'Posts' do
     let!(:test){Post.create(content: 'This is a test post')}
 
     scenario 'users can delete posts' do
+      sign_in
       visit '/posts'
       click_link 'Delete'
       expect(page).not_to have_content("This is a test post")
