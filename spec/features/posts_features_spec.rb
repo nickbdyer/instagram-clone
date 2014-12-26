@@ -32,6 +32,13 @@ feature 'Posts' do
 
   context 'when a user fills out a form to make a post' do
 
+    scenario 'they should see an error message if they aren\'t logged in' do
+      visit '/posts'
+      click_link 'Add Post'
+      expect(page).to have_content "You need to sign in" +
+                                    " or sign up before continuing."
+    end
+
     scenario 'they should see that post' do
       sign_in
       visit '/posts'
