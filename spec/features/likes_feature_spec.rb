@@ -3,7 +3,10 @@ require 'rails_helper'
 feature 'Likes' do
 
   before do
-    Post.create(content: 'A post without a picture')
+    sign_up
+    sign_out
+    sign_in
+    write_post("This is my best post")
   end
 
   scenario 'A user can like a post', js: true do

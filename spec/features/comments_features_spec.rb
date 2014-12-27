@@ -1,7 +1,13 @@
 require 'rails_helper'
+require_relative '../helpers/posts_helper.rb'
 
 feature 'Comments' do
-  before {Post.create content: 'This is my best post'}
+    before do
+      sign_up
+      sign_out
+      sign_in
+      write_post("This is my best post")
+    end
 
   scenario 'allows users to leave comments on posts' do
     visit '/posts'
