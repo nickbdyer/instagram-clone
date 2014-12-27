@@ -15,6 +15,13 @@ def sign_in
   click_button('Log in')
 end
 
+def write_post(content)
+  visit '/'
+  click_link('Add Post')
+  fill_in('Content', with: "#{content}")
+  click_button 'Create Post'
+end
+
 def sign_out
   visit '/'
   click_link 'Sign out'

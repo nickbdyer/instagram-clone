@@ -20,7 +20,8 @@ feature 'Posts' do
   context 'when a post exists' do
 
     before do
-      Post.create(content: "Hey check this out!")
+      sign_in
+      write_post("Hey check this out!")
     end
 
     scenario 'should show the posts' do
@@ -69,7 +70,12 @@ feature 'Posts' do
 
   context 'viewing posts' do
 
-    let!(:test){Post.create(content: 'Test Post')}
+    before do
+      sign_in
+      write_post("Test Post")
+    end
+
+    let!(:test){Post.find_by(content: 'Test Post')}
 
     scenario 'when clicking on a post, that post should become visible' do
       visit '/posts'
@@ -81,10 +87,14 @@ feature 'Posts' do
 
   context 'editing posts' do
 
-    let!(:test){Post.create(content: 'This is a test post')}
+    before do
+      sign_in
+      write_post("This is a test post")
+    end
+
+    let!(:test){Post.find_by(content: 'This is a test post')}
 
     scenario 'users can edit posts' do
-      sign_in
       visit '/posts'
       click_link 'Edit'
       fill_in 'Content', with: 'This is an edited test post'
@@ -96,10 +106,14 @@ feature 'Posts' do
 
   context 'deleting posts' do
 
-    let!(:test){Post.create(content: 'This is a test post')}
+    before do
+      sign_in
+      write_post("This is a test post")
+    end
+
+    let!(:test){Post.find_by(content: 'This is a test post')}
 
     scenario 'users can delete posts' do
-      sign_in
       visit '/posts'
       click_link 'Delete'
       expect(page).not_to have_content("This is a test post")

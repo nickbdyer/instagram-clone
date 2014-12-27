@@ -19,7 +19,9 @@
         <tr>
           <td><%= post.id %></td>
           <td><%= image_tag post.image.url(:thumb) %></td>
-          <td><%= link_to post.content, post_path(post) %></td>
+          <td><%= link_to post.content, post_path(post) %>
+            <span class="creator">by <%= @users.find(post.user_id).email %></span>
+          </td>
           <td><%=l post.created_at %></td>
           <td class="likes"><span class="like_count"><%= post.likes.count %></span>
              <%= "like".pluralize(post.likes.count) %></td>
