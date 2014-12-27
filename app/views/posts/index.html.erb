@@ -26,12 +26,14 @@
           <td class="likes"><span class="like_count"><%= post.likes.count %></span>
              <%= "like".pluralize(post.likes.count) %></td>
           <td>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_post_path(post), :class => 'btn btn-default btn-xs' %>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        post_path(post),
-                        :method => :delete,
-                        :class => 'btn btn-xs btn-danger' %>
+            <% if current_user && current_user.id == post.user_id %>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                          edit_post_path(post), :class => 'btn btn-default btn-xs' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          post_path(post),
+                          :method => :delete,
+                          :class => 'btn btn-xs btn-danger' %>
+            <%end%>
             <%= link_to 'Comment', new_post_comment_path(post),
               :class => 'btn btn-default btn-xs' %>          
             <%= link_to 'Like', post_likes_path(post),

@@ -6,6 +6,8 @@ feature 'Posts' do
     before do
       sign_up
       sign_out
+      user_two_sign_up
+      sign_out
     end
 
   context 'when no posts exist' do
