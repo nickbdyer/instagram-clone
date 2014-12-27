@@ -102,6 +102,13 @@ feature 'Posts' do
       expect(page).to have_content("This is an edited test post")
       expect(current_path).to eq '/posts'
     end
+
+    scenario 'users cannot edit other peoples posts' do
+      sign_out
+      user_two_sign_in
+      visit '/'
+      expect(page).not_to have_content 'Edit'
+    end
   end
 
   context 'deleting posts' do
