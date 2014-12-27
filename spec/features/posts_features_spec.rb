@@ -39,15 +39,17 @@ feature 'Posts' do
                                     " or sign up before continuing."
     end
 
-    scenario 'they should see that post' do
+    scenario 'they should see that post and their username should be displayed' do
       sign_in
       visit '/posts'
       click_link 'Add Post'
       fill_in 'Content', with: 'Hey everyone come see my post'
       click_button 'Create Post'
       expect(page).to have_content("Hey everyone come see my post")
+      expect(page).to have_content("by test@example.com")
       expect(current_path).to eq '/posts'
     end
+
   end
 
   context 'uploading photos' do
