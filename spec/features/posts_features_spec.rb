@@ -111,6 +111,7 @@ feature 'Posts' do
       visit '/'
       expect(page).not_to have_content 'Edit'
     end
+
   end
 
   context 'deleting posts' do
