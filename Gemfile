@@ -39,13 +39,13 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
-gem 'factory_girl_rails'
 gem 'paperclip'
 
 gem 'twitter-bootstrap-rails'
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'launchy'
   gem 'poltergeist'
   gem 'database_cleaner'
 end

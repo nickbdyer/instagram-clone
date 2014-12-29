@@ -112,6 +112,16 @@ feature 'Posts' do
       expect(page).not_to have_content 'Edit'
     end
 
+    scenario 'users cannot simulate an edit request to others posts' do
+      sign_out
+      user_two_sign_in
+      visit '/'
+      page.driver.put("posts/1", content: "I am changing the post")
+      expect(page.driver.status_code).to eq 302
+      visit '/'
+      expect(page).to have_content "This is a test post"
+    end
+
   end
 
   context 'deleting posts' do
