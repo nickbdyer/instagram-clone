@@ -163,6 +163,30 @@ feature 'Posts' do
       expect(page).not_to have_content 'Delete'
     end
 
+    scenario 'users cannot simulate an delete request to others posts' do
+      sign_out
+      user_two_sign_in
+      visit '/'
+      page.driver.delete("posts/#{test.id}")
+      expect(page.driver.status_code).to eq 302
+      visit '/'
+      expect(page).to have_content "This is a test post"
+    end
+
+    scenario 'another user cannot delete the post by navigating directly' do
+      sign_out
+      user_two_sign_in
+      visit "/posts/#{test.id}"
+      click_link "Delete"
+      expect(page).to have_content 'Only the owner can edit this post'
+    end
+
+    scenario 'a logged out user cannot delete a post' do
+      sign_out
+      visit "/posts/#{test.id}"
+      click_link "Delete"
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    end 
   end
 end
 
