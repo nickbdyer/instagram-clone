@@ -27,15 +27,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    begin
-    rescue
     @post = Post.find(params[:id])
     if current_user.id != @post.user_id
-      flash[:alert] = "Only the owner can edit this restaurant"
+      flash[:alert] = "Only the owner can edit this post"
       redirect_to posts_path
-    end
-    @post.update(post_params)
-    redirect_to posts_path
+    else
+      @post.update(post_params)
+      redirect_to posts_path
     end
   end
 

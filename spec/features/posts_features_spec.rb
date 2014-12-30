@@ -122,6 +122,21 @@ feature 'Posts' do
       expect(page).to have_content "This is a test post"
     end
 
+    scenario 'another user cannot update the post by navigating directly' do
+      sign_out
+      user_two_sign_in
+      visit "/posts/#{test.id}/edit"
+      fill_in 'Content', with: 'I am user two changing this post'
+      click_button 'Update Post'
+      expect(page).to have_content 'Only the owner can edit this post'
+    end
+
+    scenario 'a logged out user cannot edit a post' do
+      sign_out
+      visit "/posts/#{test.id}/edit"
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    end
+
   end
 
   context 'deleting posts' do
