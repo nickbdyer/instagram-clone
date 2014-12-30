@@ -179,6 +179,7 @@ feature 'Posts' do
       visit "/posts/#{test.id}"
       click_link "Delete"
       expect(page).to have_content 'Only the owner can edit this post'
+      expect(page).to have_content "This is a test post"
     end
 
     scenario 'a logged out user cannot delete a post' do
