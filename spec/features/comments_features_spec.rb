@@ -19,6 +19,17 @@ feature 'Comments' do
     expect(page).to have_content("No it isn't")
   end
 
+  scenario 'users emails are associated with their comments' do
+    sign_out
+    user_two_sign_in
+    visit '/posts'
+    click_link 'Comment'
+    fill_in 'Comment', with: "No it isn't"
+    click_button 'Create Comment'
+    expect(page).to have_content("No it isn't")
+    expect(page).to have_content("test@test.com")
+  end
+
   context 'when a post is deleted' do
 
     scenario 'the comments are also deleted' do
