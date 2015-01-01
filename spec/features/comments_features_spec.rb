@@ -5,6 +5,8 @@ feature 'Comments' do
     before do
       sign_up
       sign_out
+      user_two_sign_up
+      sign_out
       sign_in
       write_post("This is my best post")
     end

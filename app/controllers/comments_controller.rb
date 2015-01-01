@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def new
     @post = Post.find(params[:post_id])
     @comment = Comment.new
@@ -7,7 +9,9 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @post.comments.create(comment_params)
+    @comment = @post.comments.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.save
     redirect_to posts_path
   end
 

@@ -43,7 +43,9 @@
         <tr><td colspan="6"><ul>
         <% if post.comments.any? %>
           <% post.comments.each do |comment| %>
-            <li><%= comment.comment %></li>
+            <li><%= comment.comment %>
+            <span class="creator">by <%= @users.find(comment.user_id).email %></span>
+          </li>
           <% end %>
         <% else %>
           <li>No comments.</li>
