@@ -47,12 +47,12 @@ $ rspec
 
 #####Signed In
 
-![alt text]("images/SignedIn.png"
+![alt text](images/SignedIn.png
 "Signed In User Interface")
 
 #####Signed Out
 
-![alt text]("images/SignedOut.png"
+![alt text](images/SignedOut.png
 "Signed Out User Interface")
 
 ###Improvements
