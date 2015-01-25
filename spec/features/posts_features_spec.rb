@@ -117,6 +117,7 @@ feature 'Posts' do
       user_two_sign_in
       visit '/'
       page.driver.put("posts/1", content: "I am changing the post")
+      save_and_open_page
       expect(page.driver.status_code).to eq 302
       visit '/'
       expect(page).to have_content "This is a test post"
