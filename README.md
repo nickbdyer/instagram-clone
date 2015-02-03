@@ -1,6 +1,6 @@
 #Instagram Clone
 
-[![Code Climate](https://codeclimate.com/github/nickbdyer/instagram-clone/badges/gpa.svg)](https://codeclimate.com/github/nickbdyer/instagram-clone)
+[![Code Climate](https://codeclimate.com/github/nickbdyer/instagram-clone/badges/gpa.svg)](https://codeclimate.com/github/nickbdyer/instagram-clone) [![Test Coverage](https://codeclimate.com/github/nickbdyer/instagram-clone/badges/coverage.svg)](https://codeclimate.com/github/nickbdyer/instagram-clone)
 
 Week 8 Challenge at Makers Academy
 
